@@ -1,55 +1,54 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import Movie from "./Movie";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import Movie from './Movie';
+import { connect } from 'react-redux';
 import * as actions from '../actions';
-import _ from "lodash";
+import _ from 'lodash';
 import InfiniteScroll from 'react-infinite-scroller';
 
-class MovieList extends Component {  
-  constructor () {
-    super()
-    
-    this.loadItems = this.loadItems.bind(this)
-    
+class MovieList extends Component {
+  constructor() {
+    super();
+
+    this.loadItems = this.loadItems.bind(this);
+
     this.state = {
       hasMoreItems: true
-    }
+    };
   }
 
-  componentDidMount () {
-    this.props.fetchMovies()
+  componentDidMount() {
+    this.props.fetchMovies();
   }
 
-  loadItems (page) {
+  loadItems(page) {
     if (page < this.props.totalPages || this.props.totalPages === 0) {
-      this.props.fetchMovies(page)
+      this.props.fetchMovies(page);
     } else {
-      this.setState({ hasMoreItems: false })
+      this.setState({ hasMoreItems: false });
     }
   }
 
   render() {
-    const movies = _.map(this.props.movies, (m) => {
-      return <Movie id={m.id} key={m.id} title={m.title} img={m.poster_path} />
+    const movies = _.map(this.props.movies, m => {
+      return <Movie id={m.id} key={m.id} title={m.title} img={m.poster_path} />;
     });
 
     return (
       <InfiniteScroll
         loadMore={this.loadItems}
         pageStart={0}
-        hasMore={this.state.hasMoreItems}>
-        <MovieGrid>
-          {movies}
-        </MovieGrid>
+        hasMore={this.state.hasMoreItems}
+      >
+        <MovieGrid>{movies}</MovieGrid>
       </InfiniteScroll>
     );
   }
 }
 
-function mapStateToProps (state) {
-  return { movies: state.movies, totalPages: state.total_pages }
-};
+function mapStateToProps(state) {
+  return { movies: state.movies, totalPages: state.total_pages };
+}
 
 export default connect(
   mapStateToProps,

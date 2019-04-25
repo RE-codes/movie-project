@@ -46,6 +46,9 @@ function mapStateToProps(state) {
 }
 
 export default compose(
-  connect(mapStateToProps, actions),
+  connect(
+    mapStateToProps,
+    actions
+  ),
   reduxForm({ form: 'signin' })
 )(Signin);
