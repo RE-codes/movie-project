@@ -1,14 +1,12 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Nav = () => {
   return (
     <NavContainer>
       <div id="logo">
-        <NavLink to="/">
-          MovieFinder
-        </NavLink>
+        <NavLink to="/">MovieFinder</NavLink>
       </div>
     </NavContainer>
   );

@@ -1,17 +1,24 @@
-import "./App.css";
+import './App.css';
 import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { render } from "react-dom";
-import Nav from "./components/Nav";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { render } from 'react-dom';
+import Nav from './components/Nav';
 import App from './components/App';
-import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
-import rootReducer from "./reducers/index";
-import MovieList from './components/MovieList'
-import MovieDetail from './components/MovieDetail'
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from './reducers/index';
+import MovieList from './components/MovieList';
+import MovieDetail from './components/MovieDetail';
 
-const store = createStore(rootReducer, {}, applyMiddleware(thunk));
+const store = createStore(
+  rootReducer,
+  {},
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
+);
 
 render(
   <Provider store={store}>
@@ -27,5 +34,5 @@ render(
       </Fragment>
     </Router>
   </Provider>,
-  document.getElementById("root")
+  document.getElementById('root')
 );

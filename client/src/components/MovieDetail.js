@@ -1,14 +1,14 @@
-import React, { Component, Fragment } from "react";
-import styled from "styled-components";
-import { Poster } from "./Movie";
-import Overdrive from "react-overdrive";
+import React, { Component, Fragment } from 'react';
+import styled from 'styled-components';
+import { Poster } from './Movie';
+import Overdrive from 'react-overdrive';
 import * as actions from '../actions';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 class MovieDetail extends Component {
   render() {
-    const POSTER_PATH = "http://image.tmdb.org/t/p/w185";
-    const BACKDROP_PATH = "http://image.tmdb.org/t/p/w1280";
+    const POSTER_PATH = 'http://image.tmdb.org/t/p/w185';
+    const BACKDROP_PATH = 'http://image.tmdb.org/t/p/w1280';
 
     const { movie } = this.props;
 
@@ -22,7 +22,7 @@ class MovieDetail extends Component {
             <Poster
               src={`${POSTER_PATH}${movie.poster_path}`}
               alt="poster"
-              style={{ boxShadow: "0 5px 30px black" }}
+              style={{ boxShadow: '0 5px 30px black' }}
             />
           </Overdrive>
           <div id="info">
@@ -34,10 +34,8 @@ class MovieDetail extends Component {
                 /10
               </p>
             </div>
-
           </div>
         </DetailInfo>
-
 
         <Description>
           <p>{movie.overview}</p>
