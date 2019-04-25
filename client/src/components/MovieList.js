@@ -11,6 +11,7 @@ class MovieList extends Component {
     hasMoreItems: true
   };
 
+  // This caused the first page to load twice on page load
   // componentDidMount() {
   //   this.props.fetchMovies();
   // }
@@ -28,6 +29,7 @@ class MovieList extends Component {
     for (let movie in movies) {
       moviesArray.push(movies[movie]);
     }
+    // Sort descending by popularity - this was requested in the api fetch request, but lodash sorted everything by id
     moviesArray.sort((a, b) => {
       return b.popularity - a.popularity;
     });
@@ -39,6 +41,7 @@ class MovieList extends Component {
     //   return <Movie id={m.id} key={m.id} title={m.title} img={m.poster_path} />;
     // });
 
+    // My solution to 'de-lodashing'
     const movies = this.createMoviesArray(this.props.movies).map(m => {
       return <Movie id={m.id} key={m.id} title={m.title} img={m.poster_path} />;
     });
