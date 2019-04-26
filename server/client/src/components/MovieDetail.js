@@ -7,8 +7,8 @@ import { connect } from "react-redux";
 
 class MovieDetail extends Component {
   render() {
-    const POSTER_PATH = "http://image.tmdb.org/t/p/w185";
-    const BACKDROP_PATH = "http://image.tmdb.org/t/p/w1280";
+    const POSTER_PATH = "https://image.tmdb.org/t/p/w185";
+    const BACKDROP_PATH = "https://image.tmdb.org/t/p/w1280";
 
     const { movie } = this.props;
 
